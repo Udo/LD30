@@ -1,39 +1,7 @@
 <?
 
 header('content-type: text/css');
-
-function color($clr)
-{
-  if(sizeof($clr) == 0) #default to black
-    $clr[0] = 0;
-  if(sizeof($clr) < 3) #gray scale
-  {
-    $clr[1] = $clr[0];
-    $clr[2] = $clr[0];
-  }
-  if(sizeof($clr) < 4) #opacity
-    $clr[4] = 1.0;
-  return('rgba('.implode(', ', $clr).')');
-}
-
-function prefixize($lines, $prefixes = array('', '-moz-', '-webkit-'))
-{
-  if(!is_array($lines)) $lines = array($lines);
-  foreach($prefixes as $pfx)
-    foreach($lines as $line)
-    {
-      $line = trim($line);
-      if(substr($line, 0, 1) == '@')
-      {
-        $line = substr($line, 1);
-        $pfx = '@'.$pfx;
-      }
-      print($pfx.trim($line).chr(10));
-    }
-}
-
-$background = array(0,0,0);
-$textColor = array(0, 100, 200);
+include('css.func.php');
 
 ?>
 
@@ -42,6 +10,10 @@ $textColor = array(0, 100, 200);
   src: url('glass_tty_vt220.ttf');
 }
 
+* {
+  box-sizing: border-box;
+  line-height: 150%;
+}
 body {
   background: <?= color($background) ?>;
   color: <?= color($textColor) ?>;
@@ -50,7 +22,7 @@ body {
 }
 
 <? ob_start(); ?>
-@keyframes cursorBlink {
+@keyframes cursorBlinkKey {
   0%   { opacity: 0; }
   5%   { opacity: 1; }
   70%   { opacity: 1; }
@@ -58,11 +30,46 @@ body {
 }
 <?= prefixize(ob_get_clean())?>
 
+<? ob_start(); ?>
+@keyframes pulseBlinkKey {
+  0%   { opacity: 0.5; }
+  50%   { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+<?= prefixize(ob_get_clean())?>
+
 #cursor {
   display: inline-block;
   width: 12px;
-  height: 20px;
+  height: 22px;
+  vertical-align: middle;
   background: <?= color($textColor) ?>;
-  <?= prefixize('animation: cursorBlink 2s infinite;') ?>
+  border-bottom: 2px solid #000;
+  <?= prefixize('animation: cursorBlinkKey 2s infinite;') ?>
 }
 
+#navScreen {
+  width: 100%;
+  height: 640px;
+  background: <?= color($textColor, 0.2) ?>;
+  border-top: <?= color($textColor, 0.4) ?>;
+  border-bottom: <?= color($textColor, 0.4) ?>;
+  position: relative;
+  overflow: hidden;
+}
+
+svg {
+  position: absolute;
+}
+
+<?= prefixize('@keyframes dash { 
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 1000; }
+  }') ?>
+.dashPath {
+  stroke-dasharray: 50;
+  <?= prefixize('animation: dash 5s linear infinite;') ?>
+}
+.pulseBlink {
+  <?= prefixize('animation: pulseBlinkKey 2s linear infinite;') ?>
+}

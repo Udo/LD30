@@ -18,6 +18,10 @@ error_reporting(E_ALL & ~E_NOTICE);
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/game.css.php">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/handlebars-v1.3.0.js"></script>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -37,10 +41,6 @@ error_reporting(E_ALL & ~E_NOTICE);
         }
         ?>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
 
     </body>
 </html>
