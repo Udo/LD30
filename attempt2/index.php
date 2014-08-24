@@ -29,6 +29,10 @@ error_reporting(E_ALL & ~E_NOTICE);
         <![endif]-->
         <!-- Add your site or application content here -->
 
+        <script>
+        GameState = {};
+        </script>
+
         <?php
         $screen = basename($_REQUEST['p']);
         if($screen == '') $screen = 'default';

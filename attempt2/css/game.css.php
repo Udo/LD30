@@ -60,6 +60,7 @@ body {
 
 svg {
   position: absolute;
+  pointer: cursor;
 }
 
 <?= prefixize('@keyframes dash { 
@@ -70,6 +71,15 @@ svg {
   stroke-dasharray: 50;
   <?= prefixize('animation: dash 5s linear infinite;') ?>
 }
+<?= prefixize('@keyframes dashLeftKey { 
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -1000; }
+  }') ?>
+.dashLeft {
+  stroke-dasharray: 50;
+  <?= prefixize('animation: dashLeftKey 5s linear infinite;') ?>
+}
+
 .pulseBlink {
   <?= prefixize('animation: pulseBlinkKey 2s linear infinite;') ?>
 }
