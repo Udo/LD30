@@ -38,7 +38,7 @@ body {
 }
 <?= prefixize(ob_get_clean())?>
 
-#cursor {
+.cursor, #cursor {
   display: inline-block;
   width: 12px;
   height: 22px;
@@ -49,13 +49,20 @@ body {
 }
 
 #stage {
-  width: 100%;
-  height: 640px;
+  width: 1600px;
+  height: 900px;
   background: <?= color($background) ?>;
   border-top: <?= color($textColor, 0.2) ?>;
   border-bottom: <?= color($textColor, 0.2) ?>;
   position: relative;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#stage > * {
+  position: absolute;
+  left: 0; top: 0;
 }
 
 svg {
@@ -128,3 +135,49 @@ header {
 svg text {
   font-size: 30px;
 }
+
+#killbot {
+
+}
+
+.mob {
+  position: absolute;
+}
+
+.mobsize3 {
+  width: 320px;
+  height: 320px;
+}
+
+.hintzone {
+  transition: opacity 1s;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hintzone:hover, .hintHL {
+  opacity: 1;
+}
+
+.hintNoHL {
+  opacity: 0.3;
+}
+
+.itemLabel {
+  margin-left: 6px;
+  margin-top: -26px;
+  font-size: 80%;
+  position: absolute;
+  opacity: 0;
+  line-height: 180%;
+  transition: opacity 3s;
+}
+
+.slowFading {
+  transition: opacity 5s;
+}
+
+.mediumFading {
+  transition: opacity 1.5s linear;
+}
+
