@@ -23,9 +23,9 @@ function rollDice(percentage) {
 
 function initNewGame() {
   GameState = {
-    passengers : [],
-    spaceplanes : [],
-    buildingIndex : {},
-    newPassengerChance : 100,
   }
+  Stage = $('#stage');
+  Stage.append('<div id="chatBubble" style="z-index: 1000">test</div>');
+  Stage.append('<div id="talkWindow" style="z-index: 1001">test</div>');
+  UI.init();
 }

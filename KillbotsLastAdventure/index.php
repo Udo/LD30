@@ -27,6 +27,7 @@ include_once('css/css.func.php');
         <script src="js/ui.js"></script>
         <script src="js/sim.js"></script>
         <script src="js/level.js"></script>
+        <script src="js/talk.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -38,7 +39,7 @@ include_once('css/css.func.php');
         </header>
 
         <script>
-        GameState = {};
+        Config.textColor = '<?= color($textColor) ?>';
         </script>
 
         <div id="content"><?php

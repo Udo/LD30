@@ -57,16 +57,33 @@ SimUI = {
 Sim = {
 
   entities : [],
+  secCount : -1,
+  
+  onTick : function() {
+    if(Sim.paused) return;
+    Sim.secCount++;
+
+    if(Sim.secCount % 10 == 0 && UI.chatBubbleList && UI.chatBubbleList.length > 0) {
+      UI.displayChatBubble(UI.chatBubbleList[0]);
+      UI.chatBubbleList.splice(0, 1);
+    }
+    
+    setTimeout(Sim.onTick, 1000);
+  },
 
   onFrame : function() {
+    if(Sim.paused) return;
+
     UI.execCurrentKeyHooks();
     SimEvents.moveAll(Sim.entities);
+
     requestAnimationFrame(Sim.onFrame);
   },
   
   start : function() {
     Sim.paused = false;
     requestAnimationFrame(Sim.onFrame);
+    setTimeout(Sim.onTick, 1000);
   },
   
   pause : function() {

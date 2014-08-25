@@ -1,8 +1,8 @@
 
 <script id="ui-killbot" type="text/x-handlebars-template">
-  <div id="killbot" class="mob" style="
+  <div id="killbot" class="mob" z-index="100" style="
     left:{{tx}}px;top:{{ty}}px;width:{{w}}px;height:{{h}}px;
-    background:url('img/mobs/killbot.png') left center;">
+    background:url('img/mobs/killbot-{{scheme}}.png') left center;">
   
   </div>
 </script>
@@ -17,6 +17,7 @@ UI.register('killbot', function(p) {
   p.speed = 0;
   p.rotation = 0;
   p.fullSpeed = 3;
+  if(!p.scheme) p.scheme = 'dark';
   
   p.rotate = function(deg) {
     if(isset(deg)) p.rotation += deg;

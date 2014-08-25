@@ -1,6 +1,6 @@
 
 <script id="ui-planetimprover" type="text/x-handlebars-template">
-  <div id="killbot" class="mob" style="
+  <div id="killbot" class="mob" z-index="100" style="
     left:{{tx}}px;top:{{ty}}px;margin-left:-{{hw}}px;margin-top:-{{hh}}px;
     width:320px;height:311px;
     background:url('img/mobs/planetimprover.png') left center;">

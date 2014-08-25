@@ -26,7 +26,7 @@ Level = {
     setTimeout(function() {
       document.location.href = '?p='+nextLevel;
       }, 5000);
-    $('#stage').fadeOut(3000);
+    $('#stage').fadeOut(5000);
   },
   
 }

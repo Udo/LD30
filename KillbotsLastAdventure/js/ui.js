@@ -71,6 +71,20 @@ UI = {
       });
   },
   
+  chatBubbleList : [],
+  queueChatBubble : function(text) {
+    UI.chatBubbleList.push(text);
+  },
+  
+  displayChatBubble : function(text) {
+    if(UI.chatBubbleTO) clearTimeout(UI.chatBubbleTO);
+    $('#chatBubble').text(text).css('opacity', 1);
+    UI.chatBubbleTO = setTimeout(function() {
+      UI.chatBubbleTO = false;
+      $('#chatBubble').css('opacity', 0);
+      }, 7000);
+  },
+  
   register :  function(oType, onRegister, onRemove) {
     StageTemplates[oType] = Handlebars.compile($('#ui-'+oType).html());
     StageTemplates[oType+'Register'] = onRegister;

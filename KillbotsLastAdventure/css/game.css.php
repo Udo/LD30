@@ -160,7 +160,7 @@ svg text {
 }
 
 .hintNoHL {
-  opacity: 0.3;
+  opacity: 0;
 }
 
 .itemLabel {
@@ -174,10 +174,48 @@ svg text {
 }
 
 .slowFading {
-  transition: opacity 5s;
+  transition: opacity 5s, color 5s;
 }
 
 .mediumFading {
-  transition: opacity 1.5s linear;
+  transition: opacity 1.5s linear, color 1.5s linear;
 }
 
+#chatBubble {
+  transition: opacity 2s;
+  opacity: 0;
+  left: 200px;
+  top: 250px;
+  right: 200px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0,0,0,0.75);
+  padding: 16px;
+  border-radius: 16px;
+}
+
+#talkWindow {
+  font-size: 80%;
+  max-height: 400px; overflow: scroll;
+  transition: opacity 1s, height 2s;
+  opacity: 0;
+  left: 0;
+  top: 250px;
+  right: 0;
+  width: 500px;
+  margin-left: auto; margin-right: auto;
+  background-color: rgba(0,0,0,0.75);
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid <?= color($textColor, 0.5) ?>;
+  padding: 8px;
+}
+
+.talkOpt {
+  transition: color 0.5s;
+  color: <?= color($textColor) ?>;
+  cursor: pointer;
+}
+.talkOpt:hover {
+  color: white;
+}
